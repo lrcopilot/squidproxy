@@ -6,4 +6,11 @@ services:
     container_name: squid-proxy
     ports:
       - "3128:3128"
+    volumes:
+      # This mounts the internal Docker volume to the Squid config directory
+      - squid_config:/etc/squid
     restart: unless-stopped
+
+volumes:
+  # This creates the independent Docker volume
+  squid_config:
