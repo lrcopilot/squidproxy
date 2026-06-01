@@ -6,9 +6,4 @@ services:
     container_name: squid-proxy
     ports:
       - "3128:3128"
-    volumes:
-      - ./squid.conf:/etc/squid/squid.conf
-      # Optional: Uncomment these if you want to persist logs and cache on your host machine
-      - ./logs:/var/log/squid
-      - ./cache:/var/spool/squid
     restart: unless-stopped
