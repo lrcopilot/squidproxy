@@ -1,14 +1,14 @@
+version: "3.8"
+
 services:
   squid:
     image: ubuntu/squid:latest
-    restart: unless-stopped
+    container_name: squid-proxy
     ports:
       - "3128:3128"
     volumes:
-      - ./config:/etc/squid
-      - squid-cache:/var/spool/squid
-      - squid-logs:/var/log/squid
-
-volumes:
-  squid-cache:
-  squid-logs:
+      - ./squid.conf:/etc/squid/squid.conf
+      # Optional: Uncomment these if you want to persist logs and cache on your host machine
+      - ./logs:/var/log/squid
+      - ./cache:/var/spool/squid
+    restart: unless-stopped
